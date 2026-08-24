@@ -7,7 +7,7 @@ A ferramenta processa relatórios brutos exportados do Google Ads (em formato CS
 ---
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://(https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/))
 
-🔗 **Live Demo:** [Aceder ao Google Ads AI Optimizer](https://(https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/))
+🔗 **Live Demo:** [Aceder ao Google Ads AI Optimizer](https://[https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/])
 
 ## 🚀 Funcionalidades Principais
 
