@@ -115,6 +115,7 @@ if "upload_dataframes" not in st.session_state:
 # -----------------------------------------------------------------------------
 def get_active_model(client: genai.Client) -> str:
     preferred_models = [
+        "gemini-3.6-flash",
         "gemini-2.5-flash",
         "gemini-2.0-flash",
         "gemini-1.5-flash",
@@ -127,7 +128,7 @@ def get_active_model(client: genai.Client) -> str:
                     return avail
     except Exception:
         pass
-    return "gemini-2.5-flash"
+    return "gemini-3.6-flash"
 
 
 def read_uploaded_csv(uploaded_file) -> pd.DataFrame:
