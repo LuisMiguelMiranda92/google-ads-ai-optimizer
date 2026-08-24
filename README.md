@@ -5,9 +5,11 @@ Uma aplicação web desenvolvida em **Python** e **Streamlit** que automatiza au
 A ferramenta processa relatórios brutos exportados do Google Ads (em formato CSV), analisa métricas essenciais de desempenho e gera diagnósticos acionáveis com planos de execução claros.
 
 ---
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://(https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/))
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/)
 
-🔗 **Live Demo:** [Aceder ao Google Ads AI Optimizer](https://[https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/])
+🔗 **Live Demo:** [Aceder ao Google Ads AI Optimizer](https://app-ads-ai-optimizer-hygt4ctdztgztaekapgqr2.streamlit.app/)
+
+---
 
 ## 🚀 Funcionalidades Principais
 
