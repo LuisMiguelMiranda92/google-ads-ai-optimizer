@@ -101,9 +101,6 @@ OPTIONAL_FILES = {
 
 ALL_FILES = {**REQUIRED_FILES, **OPTIONAL_FILES}
 
-if "gemini_api_key" not in st.session_state:
-    st.session_state.gemini_api_key = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", ""))
-
 if "last_report" not in st.session_state:
     st.session_state.last_report = None
 if "negative_keywords" not in st.session_state:
@@ -443,26 +440,39 @@ def show_results_section() -> None:
         show_next_steps_tab(next_steps)
 
 # -----------------------------------------------------------------------------
-# 6. Interface Principal (Sidebar + Uploads)
+# 6. Interface Principal (Sidebar Segura + Uploads)
 # -----------------------------------------------------------------------------
 with st.sidebar:
     st.header("⚙️ Configuração")
-    api_key_input = st.text_input(
-        "Gemini API Key",
-        value=st.session_state.gemini_api_key,
+    
+    # 1. Obtém a chave dos Secrets (se configurada na Cloud ou local)
+    secret_key = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", ""))
+    
+    # 2. Input opcional mantido sempre em branco para proteção da chave secreta
+    user_api_key = st.text_input(
+        "Gemini API Key (Opcional)",
+        value="",
         type="password",
-        placeholder="Introduza a sua API Key",
-        help=(
-            "Carregada automaticamente de .streamlit/secrets.toml se existir. "
-            "Obtenha a chave em https://aistudio.google.com/apikey"
-        ),
+        placeholder="Introduza uma chave própria (opcional)",
+        help="Deixe em branco para usar a chave padrão pré-configurada nos Secrets."
     )
+    
     if st.button("Guardar API Key", use_container_width=True):
-        st.session_state.gemini_api_key = api_key_input
-        st.success("API Key guardada em memória.")
+        if user_api_key.strip():
+            st.session_state["custom_api_key"] = user_api_key.strip()
+            st.success("Chave personalizada guardada!")
+        else:
+            st.session_state.pop("custom_api_key", None)
+            st.info("A usar a chave padrão dos Secrets.")
 
-    if st.session_state.gemini_api_key:
-        st.caption("✅ API Key configurada")
+    # 3. Define a chave ativa com prioridade para chave customizada do visitante
+    effective_api_key = st.session_state.get("custom_api_key", "").strip() or secret_key
+    st.session_state.gemini_api_key = effective_api_key
+
+    if effective_api_key:
+        st.caption("✅ API Key pronta a usar")
+    else:
+        st.caption("⚠️ Nenhuma API Key configurada")
 
 st.markdown("""
 <div class="hero-container">
